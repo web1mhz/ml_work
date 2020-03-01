@@ -34,12 +34,29 @@ saver.restore(sess, save_path)
 def index():
     if request.method == 'GET':
         return render_template('index.html')
+
+
     if request.method == 'POST':
         # 파라미터를 전달 받습니다.
+
+        if request.form['avg_temp'] == "":
+            return render_template('index.html')
+
+        if request.form['min_temp'] == "":
+            return render_template('index.html')
+
+        if request.form['max_temp'] == "":
+            return render_template('index.html')
+
+        if request.form['rain_fall'] == "":
+            return render_template('index.html')
+
         avg_temp = float(request.form['avg_temp'])
         min_temp = float(request.form['min_temp'])
         max_temp = float(request.form['max_temp'])
         rain_fall = float(request.form['rain_fall'])
+
+        
 
         # 배추 가격 변수를 선언합니다.
         price = 0
